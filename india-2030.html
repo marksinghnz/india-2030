@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>India 2030: The Superpower Test Is at Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Playfair+Display+SC:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0B1120;
+    --bg2:       #111827;
+    --bg3:       #1a2540;
+    --text:      #F2EDE4;
+    --text-muted:#A89F94;
+    --accent:    #E8873A;
+    --accent2:   #3D5A99;
+    --divider:   rgba(242,237,228,0.10);
+    --card-bg:   rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --serif:     'Playfair Display', Georgia, serif;
+    --serif-sc:  'Playfair Display SC', Georgia, serif;
+    --sans:      'Inter', system-ui, sans-serif;
+    --max:       680px;
+    --wide:      760px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.78;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 60%, #0f1d38 0%, var(--bg) 70%);
+    padding: 4rem 2rem 3rem;
+  }
+
+  .hero-chakra {
+    width: min(420px, 80vw);
+    height: min(420px, 80vw);
+    opacity: 0.18;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -56%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-chakra { animation: spin 90s linear infinite; }
+    @keyframes spin { to { transform: translate(-50%,-56%) rotate(360deg); } }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 640px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--serif-sc);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 2.8rem;
+    line-height: 1.55;
+  }
+
+  .hero-meta {
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: rgba(168,159,148,0.6);
+    font-weight: 400;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+  }
+
+  /* ── ARTICLE BODY ─────────────────────────────────── */
+  .article {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 5rem 2rem 6rem;
+  }
+
+  .lead {
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 2.4rem;
+    font-weight: 400;
+  }
+
+  p {
+    margin-bottom: 1.6rem;
+    color: rgba(242,237,228,0.88);
+  }
+
+  /* ── SECTION HEADINGS ─────────────────────────────── */
+  .section-head {
+    display: block;
+    font-family: var(--serif-sc);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin: 4rem 0 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  /* ── PULL QUOTE ───────────────────────────────────── */
+  .pull {
+    margin: 3rem -1.5rem;
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--card-bg);
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* ── CLOSING LINES ────────────────────────────────── */
+  .closing-lines {
+    margin: 3rem 0;
+    padding-left: 2rem;
+    border-left: 1px solid var(--divider);
+  }
+  .closing-lines p {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+  }
+
+  .final-line {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--divider);
+  }
+
+  /* ── VISUAL BLOCKS ────────────────────────────────── */
+  .visual-block {
+    margin: 3.5rem -1rem;
+    padding: 2rem 1.5rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+  }
+
+  .visual-wide {
+    margin: 3.5rem calc(50% - var(--wide)/2 - 2rem + 2rem);
+    margin-left: max(-40px, calc((100vw - var(--wide)) / -2));
+    margin-right: max(-40px, calc((100vw - var(--wide)) / -2));
+    padding: 2rem 2rem 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+  }
+
+  .visual-label {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .visual-title {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+
+  .visual-note {
+    font-size: 11px;
+    color: rgba(168,159,148,0.65);
+    margin-top: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* ── STAT TILES ───────────────────────────────────── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 10px;
+  }
+
+  .stat-tile {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--card-border);
+    border-radius: 3px;
+    padding: 1rem 1.1rem;
+  }
+
+  .stat-tile-label {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    line-height: 1.3;
+    font-weight: 400;
+  }
+
+  .stat-tile-value {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+
+  .stat-tile-sub {
+    font-size: 10.5px;
+    color: rgba(168,159,148,0.7);
+    line-height: 1.4;
+  }
+
+  /* ── CHART CANVAS ─────────────────────────────────── */
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+
+  .chart-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  /* ── NEIGHBOURHOOD SKETCH ─────────────────────────── */
+  .neigh-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 8px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .neigh-card {
+    border: 1px solid var(--card-border);
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+    font-size: 12px;
+  }
+
+  .neigh-card-name {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .neigh-card-status {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .neigh-india {
+    grid-column: 2;
+    grid-row: 2;
+    background: rgba(61,90,153,0.25);
+    border-color: rgba(61,90,153,0.5);
+    text-align: center;
+  }
+
+  .neigh-danger  { background: rgba(226,75,74,0.08);  border-color: rgba(226,75,74,0.3);  }
+  .neigh-warning { background: rgba(186,117,23,0.1);  border-color: rgba(186,117,23,0.3); }
+  .neigh-neutral { background: rgba(255,255,255,0.03); }
+
+  .neigh-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    padding: 1px 7px;
+    border-radius: 2px;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .tag-red    { background: rgba(226,75,74,0.18);  color: #f09595; }
+  .tag-amber  { background: rgba(186,117,23,0.2);  color: #FAC775; }
+  .tag-gray   { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+  .tag-blue   { background: rgba(61,90,153,0.3);   color: #85B7EB; }
+
+  .neigh-ocean {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    text-align: center;
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(168,159,148,0.5);
+    padding: 0.5rem 0;
+    border-top: 1px dashed rgba(168,159,148,0.15);
+    margin-top: 4px;
+  }
+
+  .neigh-connector {
+    grid-column: 2;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-top: 2px;
+  }
+
+  /* ── SCROLL REVEAL ────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  /* ── DIVIDER ──────────────────────────────────────── */
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.4;
+    margin: 3rem auto;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--divider);
+    font-size: 11px;
+    color: rgba(168,159,148,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 600px) {
+    .pull { margin: 2rem -0.5rem; padding: 1.5rem; }
+    .visual-block { margin: 2.5rem -0.5rem; padding: 1.5rem 1rem; }
+    .visual-wide  { margin: 2.5rem -1rem;  padding: 1.5rem 1rem; }
+    .neigh-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .neigh-india { grid-column: 1 / -1; }
+    .neigh-connector { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <!-- Cracked Ashoka Chakra SVG -->
+  <svg class="hero-chakra" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <clipPath id="cClip">
+        <circle cx="200" cy="200" r="175"/>
+      </clipPath>
+    </defs>
+    <!-- Outer rings -->
+    <circle cx="200" cy="200" r="175" fill="none" stroke="#F2EDE4" stroke-width="9"/>
+    <circle cx="200" cy="200" r="160" fill="none" stroke="#F2EDE4" stroke-width="1.2" opacity="0.5"/>
+    <!-- Inner rings -->
+    <circle cx="200" cy="200" r="26"  fill="none" stroke="#F2EDE4" stroke-width="4"/>
+    <circle cx="200" cy="200" r="16"  fill="none" stroke="#F2EDE4" stroke-width="1.2" opacity="0.5"/>
+    <!-- 24 spokes -->
+    <g stroke="#F2EDE4" stroke-width="1.5">
+      <line x1="200" y1="26"  x2="200" y2="174"/>
+      <line x1="200" y1="226" x2="200" y2="374"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(15,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(15,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(30,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(30,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(45,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(45,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(60,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(60,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(75,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(75,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(90,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(90,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(105,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(105,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(120,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(120,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(135,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(135,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(150,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(150,200,200)"/>
+      <line x1="200" y1="26"  x2="200" y2="174"  transform="rotate(165,200,200)"/>
+      <line x1="200" y1="226" x2="200" y2="374"  transform="rotate(165,200,200)"/>
+    </g>
+    <!-- Spoke tip diamonds -->
+    <g fill="#F2EDE4">
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(15,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(30,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(45,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(60,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(75,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(90,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(105,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(120,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(135,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(150,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(165,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(180,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(195,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(210,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(225,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(240,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(255,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(270,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(285,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(300,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(315,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(330,200,200)"/>
+      <rect x="196" y="21" width="8" height="8" rx="1" transform="rotate(45,200,25) rotate(345,200,200)"/>
+    </g>
+    <!-- Crack lines clipped to circle -->
+    <g clip-path="url(#cClip)" stroke="#F2EDE4" fill="none" stroke-linecap="round">
+      <polyline points="115,68 132,110 118,148 136,188 124,234" stroke-width="2.2"/>
+      <polyline points="132,110 158,126 178,112"  stroke-width="1.2" opacity="0.7"/>
+      <polyline points="274,58 260,96 276,132 265,175 280,218" stroke-width="1.5" opacity="0.8"/>
+      <polyline points="182,298 196,268 190,238" stroke-width="0.9" opacity="0.55"/>
+      <polyline points="248,44 234,72 244,94"  stroke-width="0.8" opacity="0.45"/>
+      <polyline points="136,188 155,196 148,218" stroke-width="0.7" opacity="0.4"/>
+    </g>
+    <circle cx="200" cy="200" r="5" fill="#F2EDE4" opacity="0.6"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Analysis · India · 2026</p>
+    <h1 class="hero-title">India 2030:<br/>The Superpower Test<br/>Is at Home</h1>
+    <p class="hero-subtitle">The wheel keeps turning. The cracks are also real.</p>
+    <p class="hero-meta">June 2026</p>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">scroll</div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ARTICLE
+════════════════════════════════════════════════════ -->
+<article class="article">
+
+  <p class="lead reveal">India is not a country on the brink. But it is a country at a breakpoint.</p>
+
+  <p class="reveal">By 2030, it will almost certainly be the world's third-largest economy, having overtaken Japan and Germany on the strength of a decade of compounding growth. Its real GDP expanded 7.7% in FY2026 — the fastest among all G20 nations — driven not by government spending alone but by a genuine surge in household consumption and private investment. It has scale, demographic momentum, digital infrastructure that much of the developed world envies, a foreign policy that keeps its options genuinely open, and a domestic market so large that the world cannot choose to ignore it.</p>
+
+  <p class="reveal">And yet the question for India is no longer whether it can rise. The question is whether it can rise without unravelling from within.</p>
+
+  <!-- ── STAT BANNER ── -->
+  <div class="visual-block reveal" style="margin-top:3rem;">
+    <p class="visual-label">India at a glance · 2026</p>
+    <div class="stat-grid">
+      <div class="stat-tile">
+        <p class="stat-tile-label">Economy rank by 2030</p>
+        <p class="stat-tile-value">7.7%</p>
+        <p class="stat-tile-sub">GDP growth FY2026 · fastest G20</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-label">Youth unemployment</p>
+        <p class="stat-tile-value">~10%</p>
+        <p class="stat-tile-sub">ages 15–29 · urban 13.6% · PLFS 2025</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-label">Air pollution toll</p>
+        <p class="stat-tile-value" style="color:var(--accent);">−3.5 yrs</p>
+        <p class="stat-tile-sub">life expectancy lost per citizen · AQLI 2025</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-label">Women in workforce</p>
+        <p class="stat-tile-value">41.7%</p>
+        <p class="stat-tile-sub">FLFPR 2023–24 · up from 23% in 2017–18</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-label">Health spending</p>
+        <p class="stat-tile-value" style="color:var(--accent);">1.9%</p>
+        <p class="stat-tile-sub">of GDP · own target is 2.5%</p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-tile-label">Education spending</p>
+        <p class="stat-tile-value" style="color:var(--accent);">3–4%</p>
+        <p class="stat-tile-sub">of GDP · NEP target: 6% · decade-long gap</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:3rem;">The current government has delivered visible state capacity: highways, welfare transfers, digital public infrastructure, manufacturing incentives, border assertiveness, and a new confidence in global forums. It has made India feel bigger in the world. But power abroad cannot compensate for mistrust at home. A country cannot become a stable superpower if large sections of its citizens feel watched, judged, provoked or politically expendable.</p>
+
+  <!-- ── SECTION: CORROSION ── -->
+  <span class="section-head reveal">The corrosion inside</span>
+
+  <p class="reveal">India's biggest internal security risk by 2030 is not civil war. That phrase is too dramatic for a country with deep institutions, a strong military, competitive federalism, active courts and an instinctive social resilience. The more realistic danger is something uglier, because it is more normalised: not the spectacle of mass riots, but the slow erosion of civic trust — mob lynchings, institutional bias against minorities, religious provocation in public spaces, selective policing, digital hate, and neighbourhood-level fear becoming routine features of political life.</p>
+
+  <div class="pull reveal">
+    That is not civil war. It is civic corrosion. And the rot is not disappearing. It is going deeper and becoming harder to see.
+  </div>
+
+  <p class="reveal">The data tells a more sophisticated story than simple escalation. Large-scale communal riots actually fell sharply in 2025. But religion-based violence did not retreat — it migrated, shifting into systemic and institutional forms: discrimination embedded in bureaucratic process, hate speech normalised in public culture, minority communities marginalised in everyday public spaces.</p>
+
+  <p class="reveal">Communal polarisation is not merely a moral problem. It is an economic one. Investors price risk. Talent leaves tension. Tourism fears disorder. Global partners notice institutional bias. Women withdraw from unsafe public spaces. Young men without jobs become easy recruits for identity politics. Every act of communal violence is not just a law-and-order failure; it is an advertisement against India's own future.</p>
+
+  <!-- ── SECTION: ECONOMY ── -->
+  <span class="section-head reveal">The economy's unfinished business</span>
+
+  <p class="reveal">India's growth story is real — but it carries a warning the political class has not yet fully confronted: who benefits, and how, matters as much as the headline number.</p>
+
+  <!-- ── CHART 1: GDP vs Youth Unemployment ── -->
+  <div class="visual-block reveal">
+    <p class="visual-label">Growth without enough jobs</p>
+    <p class="visual-title">GDP growth rate vs youth unemployment (ages 15–29), India · FY2019–FY2026</p>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#3D5A99;"></span>GDP growth %</span>
+      <span><span class="legend-dot" style="background:#E24B4A;"></span>Youth unemployment %</span>
+    </div>
+    <div class="chart-wrap" style="height:260px;">
+      <canvas id="growthChart" role="img" aria-label="Dual-axis line chart: GDP growth recovered to 7.7% in FY2026 while youth unemployment remained in double digits.">GDP growth: FY19 6.5, FY20 4.0, FY21 -6.6, FY22 8.7, FY23 7.2, FY24 8.2, FY25 7.1, FY26 7.7. Youth unemployment: 17, 18, 21, 18, 14, 13, 12, 10.</canvas>
+    </div>
+    <p class="visual-note">GDP: MoSPI provisional estimates. Youth unemployment (15–29) composite from PLFS / ILO data. Left axis = GDP growth; right axis = unemployment rate.</p>
+  </div>
+
+  <p class="reveal">Youth unemployment remains stubbornly in double digits. Fewer than one in twenty young Indians between 15 and 29 have received any formal vocational or technical training. The economy is growing quickly, but it is not absorbing its young people quickly enough, or in the right kinds of work. A demographic dividend is not automatic. It is a deadline. By 2030, India's youth bulge can power factories, services, defence production, clean energy and global innovation. Or it can feed resentment, radicalisation and the kind of street-level anger that erodes societies from the inside.</p>
+
+  <p class="reveal">Then there is the question of who owns what India is building. The concentration of strategic national assets — airports, seaports, power distribution networks, defence supply chains — into a single private conglomerate, at a velocity Indian business history has never seen before, raises questions that admiring GDP figures cannot answer. This is not simply a corruption story. It is a structural one. When foreign policy appears to bend in the direction of one group's reputational interests, when a US criminal prosecution evaporates after a well-timed investment pledge, when insolvency proceedings produce outcomes that reach the Supreme Court for scrutiny, the issue is no longer cronyism in the ordinary sense. It becomes a question of whether the Indian state is being run in the public interest — or has been quietly borrowed by it.</p>
+
+  <div class="pull reveal">
+    Crony capitalism has always been part of Indian economic life. What is historically unusual is the concentration — and the impunity that now surrounds it.
+  </div>
+
+  <p class="reveal">A superpower cannot be built on a system where strategic assets flow to those closest to power rather than to those most capable of running them.</p>
+
+  <!-- ── SECTION: PEOPLE ── -->
+  <span class="section-head reveal">The cost of neglecting people</span>
+
+  <p class="reveal">The employment challenge is especially acute for women. India's Female Labour Force Participation Rate has risen meaningfully — a genuine and hard-won shift in just six years. But the gains are fragile and the remaining distance is vast.</p>
+
+  <!-- ── CHART 2: FLFPR Trend ── -->
+  <div class="visual-block reveal">
+    <p class="visual-label">Women entering the workforce</p>
+    <p class="visual-title">Female Labour Force Participation Rate, India (%) · PLFS annual data</p>
+    <div class="chart-wrap" style="height:230px;">
+      <canvas id="flfprChart" role="img" aria-label="Line chart showing India FLFPR rising from 23.3% in 2017-18 to 41.7% in 2023-24.">2017-18: 23.3. 2018-19: 24.5. 2019-20: 30.0. 2020-21: 32.5. 2021-22: 32.8. 2022-23: 37.0. 2023-24: 41.7.</canvas>
+    </div>
+    <p class="visual-note">Still well below the 65–75% seen in high-income economies. Gains concentrated in rural self-employment; urban female FLFPR remains at ~25%.</p>
+  </div>
+
+  <p class="reveal">Nearly a third of women cite unsafe commutes as a barrier to work; unpaid domestic labour consumes more than six hours of an average woman's day. No country becomes a high-income economy while half its potential workforce is constrained by safety, care burdens and social expectation. India's next leap will not come only from semiconductors and expressways. It will come from women working freely, minorities feeling constitutionally secure, states competing on jobs rather than identity, and courts and police trusted equally across communities.</p>
+
+  <p class="reveal">There is a parallel failure playing out in India's cities that the infrastructure narrative consistently obscures. Air pollution cuts the average Indian's life expectancy by 3.5 years — a heavier toll than malnutrition, and far heavier than the threat of terrorism that commands so much more political attention. Nearly 1.7 million Indians died from PM2.5 exposure in a single recent year. Delhi has held the title of the world's most polluted capital city for years running. When the government's own Environment Minister told Parliament there was no data linking high pollution to lung disease, it signalled something more alarming than incompetence: a political class that has chosen denial over governance on one of the most basic obligations a state owes its people.</p>
+
+  <p class="reveal">Urban mismanagement — chaotic land use, flooding, open waste burning, poisoned air — is not incidental to India's development story. It is a measure of it. Expressways to cities are not the same as cities that work.</p>
+
+  <p class="reveal">India also systematically underinvests in the foundations of durable power.</p>
+
+  <!-- ── CHART 3: Social Spending ── -->
+  <div class="visual-block reveal">
+    <p class="visual-label">Investing in people · % of GDP</p>
+    <p class="visual-title">Health and education spending — India vs peers</p>
+    <div class="chart-legend">
+      <span><span class="legend-dot" style="background:#3D5A99;"></span>Education</span>
+      <span><span class="legend-dot" style="background:#1baf7a;"></span>Health</span>
+    </div>
+    <div class="chart-wrap" style="height:300px;">
+      <canvas id="spendChart" role="img" aria-label="Grouped bar chart: India spends far less on health and education than Brazil, South Africa, Japan, and the OECD average.">India: education 3.5%, health 1.9%. Brazil: education 6.0%, health 9.6%. South Africa: education 6.5%, health 8.6%. OECD avg: education 5.0%, health 8.8%. Japan: education 3.7%, health 10.9%.</canvas>
+    </div>
+    <p class="visual-note">Sources: World Bank / EY India analysis. India health figure: 1.9% of GDP (MoSPI FY24, up from 1.4% in FY18). Education: Budget allocations FY25. NEP 2020 target: 6% of GDP.</p>
+  </div>
+
+  <p class="reveal">Public health spending stands at roughly 1.9% of GDP — well below the government's own target of 2.5%, and a fraction of what peer economies commit. Education spending has hovered between 3% and 4% of GDP for a decade, far short of the 6% floor that India's own National Education Policy set as a minimum. You cannot build a knowledge economy or a healthy workforce on the cheap. Highways and data centres capture headlines. Schools, clinics and clean air build the human capital that sustains power across generations. One set gets built. The other gets promised.</p>
+
+  <!-- ── SECTION: DEMOCRACY ── -->
+  <span class="section-head reveal">A democracy without an opposition</span>
+
+  <p class="reveal">India's opposition is not merely weak. It is structurally outmanoeuvred, losing state elections in Maharashtra, Haryana, Delhi and Bihar in quick succession despite genuine public anxieties about employment, prices and governance. The INDIA bloc has failed to convert anti-incumbency into electoral arithmetic. Its challenge is not episodic or election-specific — it is structural, marked by institutional marginalisation in Parliament, fragile unity, and an absence of any persuasive national narrative beyond opposition to the BJP itself.</p>
+
+  <div class="pull reveal">
+    The TINA dynamic — There Is No Alternative — is not a sign of government strength. It is a sign of democratic atrophy.
+  </div>
+
+  <p class="reveal">When a political system loses its capacity to generate credible alternatives, it also loses the self-correcting mechanism that healthy democracies depend on. Incumbents who face no real accountability have little incentive to fix what is broken. A one-party political default, sustained year after year, is not stability. It is stagnation wearing a confident face.</p>
+
+  <!-- ── SECTION: NEIGHBOURHOOD ── -->
+  <span class="section-head reveal">A neighbourhood that no longer defers</span>
+
+  <p class="reveal">Externally, India retains remarkable strategic advantages. It can partner with the United States without becoming a client. It can keep Russia close without surrendering autonomy. It can compete with China while avoiding reckless escalation. It sits at the centre of the world's fastest-growing region and anchors the Indo-Pacific security architecture.</p>
+
+  <p class="reveal">But India's neighbourhood no longer defers to it.</p>
+
+  <!-- ── NEIGHBOURHOOD VISUAL ── -->
+  <div class="visual-block reveal">
+    <p class="visual-label">Regional relationships · mid-2026</p>
+    <p class="visual-title">India's neighbourhood — a schematic of status and drift</p>
+    <div class="neigh-grid" style="margin-top:1.2rem;">
+      <!-- Row 1 -->
+      <div class="neigh-card neigh-warning">
+        <p class="neigh-card-name">China</p>
+        <p class="neigh-card-status">Border assertive, contested waters</p>
+        <span class="neigh-tag tag-amber">Competing</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;">
+        <svg width="24" height="40" viewBox="0 0 24 40" aria-hidden="true"><line x1="12" y1="0" x2="12" y2="40" stroke="rgba(168,159,148,0.25)" stroke-width="1" stroke-dasharray="3 3"/></svg>
+      </div>
+      <div class="neigh-card neigh-neutral">
+        <p class="neigh-card-name">Bangladesh</p>
+        <p class="neigh-card-status">Post-Hasina pivot to Beijing</p>
+        <span class="neigh-tag tag-gray">Drifting</span>
+      </div>
+      <!-- Row 2 -->
+      <div class="neigh-card neigh-danger">
+        <p class="neigh-card-name">Pakistan</p>
+        <p class="neigh-card-status">Nuclear-armed, deeply unstable</p>
+        <span class="neigh-tag tag-red">Fraught</span>
+      </div>
+      <div class="neigh-card neigh-india">
+        <p class="neigh-card-name" style="color:var(--text);font-size:15px;">India</p>
+        <p class="neigh-card-status" style="color:rgba(242,237,228,0.6);">World's 3rd largest economy by 2030</p>
+        <span class="neigh-tag tag-blue">Rising</span>
+      </div>
+      <div class="neigh-card neigh-neutral">
+        <p class="neigh-card-name">Nepal · Sri Lanka · Maldives</p>
+        <p class="neigh-card-status">Recalibrating, not following</p>
+        <span class="neigh-tag tag-gray">Wary</span>
+      </div>
+      <!-- Ocean -->
+      <p class="neigh-ocean">Indian Ocean — increasingly contested</p>
+    </div>
+    <p class="visual-note" style="margin-top:1.2rem;">Schematic · relationship status as of mid-2026 · not geographically proportional</p>
+  </div>
+
+  <p class="reveal">Relations with Bangladesh collapsed after the fall of the Hasina government, with Dhaka pivoting toward China and treating India's northeastern corridor as a strategic lever rather than a shared interest. Nepal's anti-elite protests carried strands of explicit skepticism toward New Delhi. Sri Lanka and the Maldives are recalibrating, not following. Pakistan remains nuclear-armed and deeply unstable, and the India-Pakistan deterrence environment is more fraught than at any point in two decades. The Indian Ocean itself is increasingly contested. For India to lead its region rather than merely dominate it, it must offer neighbours trade, connectivity, energy and genuine respect — not lectures, and not the assumption of deference it can no longer count on.</p>
+
+  <!-- ── SECTION: VERDICT ── -->
+  <span class="section-head reveal">The 2030 verdict</span>
+
+  <p class="reveal">By 2030, India will be the world's third-largest economy. Its digital infrastructure will be among the most sophisticated anywhere. Its military will be more capable, its global voice louder, its brand more powerful than at any point in its modern history.</p>
+
+  <p class="reveal">But none of that will be enough if the civic foundations continue to crack. A country that reaches the top table of global power while a third of its citizens live under the shadow of communal fear, while its young people cannot find dignified work, while its cities choke on air that kills nearly two million a year, while its schools and hospitals are chronically underfunded, while its business landscape is shaped by proximity to power rather than governed by competition — that country will carry a brittleness into its prominence that no GDP figure can paper over.</p>
+
+  <div class="divider reveal"></div>
+
+  <div class="closing-lines reveal">
+    <p>India's 2030 choice is not between nationalism and liberalism.<br/>It is between confident nationalism and insecure majoritarianism.</p>
+    <p style="margin-top:1.2rem;">A confident India does not need internal enemies.</p>
+    <p>A strong India does not fear pluralism.</p>
+    <p>A rising India cannot afford permanent polarisation.</p>
+  </div>
+
+  <p class="reveal" style="margin-top:2rem;">The superpower test will not be passed at the G20, BRICS, Quad or United Nations. It will be passed in India's streets, police stations, courts, classrooms, factories and neighbourhoods — in the daily experience of ordinary citizens who are either participants in the country's rise, or its collateral damage.</p>
+
+  <p class="reveal">India's rise is real. The warning is equally real.</p>
+
+  <p class="final-line reveal">No nation can dominate the century while doubting its own citizens.</p>
+
+</article>
+
+<footer>
+  India 2030 · Analysis · June 2026 · Facts verified against MoSPI, PLFS, AQLI 2025, World Bank, Lancet Countdown 2025
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════
+     CHARTS
+════════════════════════════════════════════════════ -->
+<script>
+const GRID   = 'rgba(242,237,228,0.07)';
+const TICK   = 'rgba(168,159,148,0.65)';
+const BLUE   = '#3D5A99';
+const RED    = '#E24B4A';
+const GREEN  = '#1baf7a';
+
+Chart.defaults.font.family = "'Inter', system-ui, sans-serif";
+
+/* ── Chart 1: GDP vs Youth Unemployment ── */
+new Chart(document.getElementById('growthChart'), {
+  type: 'line',
+  data: {
+    labels: ['FY19','FY20','FY21','FY22','FY23','FY24','FY25','FY26'],
+    datasets: [
+      {
+        label: 'GDP growth %',
+        data: [6.5, 4.0, -6.6, 8.7, 7.2, 8.2, 7.1, 7.7],
+        borderColor: BLUE,
+        backgroundColor: 'rgba(61,90,153,0.08)',
+        borderWidth: 2,
+        pointBackgroundColor: BLUE,
+        pointBorderColor: '#0B1120',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        fill: false,
+        tension: 0.3,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Youth unemployment %',
+        data: [17, 18, 21, 18, 14, 13, 12, 10],
+        borderColor: RED,
+        borderDash: [5,4],
+        backgroundColor: 'rgba(226,75,74,0.05)',
+        borderWidth: 2,
+        pointBackgroundColor: RED,
+        pointBorderColor: '#0B1120',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        fill: false,
+        tension: 0.3,
+        yAxisID: 'y2'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a2540',
+        titleColor: '#F2EDE4',
+        bodyColor: '#A89F94',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => {
+            const s = ctx.datasetIndex === 0 ? '% GDP growth' : '% youth unemployment';
+            return ' ' + ctx.parsed.y.toFixed(1) + s;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: TICK, font: { size: 11 } },
+        border: { color: 'rgba(255,255,255,0.08)' }
+      },
+      y: {
+        position: 'left',
+        min: -10, max: 15,
+        grid: { color: GRID },
+        ticks: { color: BLUE, font: { size: 11 }, callback: v => v + '%' },
+        border: { display: false }
+      },
+      y2: {
+        position: 'right',
+        min: 0, max: 25,
+        grid: { display: false },
+        ticks: { color: RED, font: { size: 11 }, callback: v => v + '%' },
+        border: { display: false }
+      }
+    }
+  }
+});
+
+/* ── Chart 2: FLFPR Trend ── */
+new Chart(document.getElementById('flfprChart'), {
+  type: 'line',
+  data: {
+    labels: ['2017–18','2018–19','2019–20','2020–21','2021–22','2022–23','2023–24'],
+    datasets: [{
+      label: 'FLFPR %',
+      data: [23.3, 24.5, 30.0, 32.5, 32.8, 37.0, 41.7],
+      borderColor: '#E8873A',
+      backgroundColor: 'rgba(232,135,58,0.08)',
+      borderWidth: 2,
+      pointBackgroundColor: '#E8873A',
+      pointBorderColor: '#0B1120',
+      pointBorderWidth: 2,
+      pointRadius: 4,
+      fill: true,
+      tension: 0.35
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a2540',
+        titleColor: '#F2EDE4',
+        bodyColor: '#A89F94',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        callbacks: { label: ctx => ' ' + ctx.parsed.y.toFixed(1) + '%' }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: TICK, font: { size: 11 }, maxRotation: 0 },
+        border: { color: 'rgba(255,255,255,0.08)' }
+      },
+      y: {
+        min: 15, max: 48,
+        grid: { color: GRID },
+        ticks: { color: TICK, font: { size: 11 }, callback: v => v + '%' },
+        border: { display: false }
+      }
+    }
+  }
+});
+
+/* ── Chart 3: Social Spending ── */
+new Chart(document.getElementById('spendChart'), {
+  type: 'bar',
+  data: {
+    labels: ['India','Brazil','South Africa','OECD avg','Japan'],
+    datasets: [
+      {
+        label: 'Education',
+        data: [3.5, 6.0, 6.5, 5.0, 3.7],
+        backgroundColor: BLUE,
+        borderRadius: 3,
+        borderSkipped: 'bottom',
+        hoverBackgroundColor: '#4a6db5'
+      },
+      {
+        label: 'Health',
+        data: [1.9, 9.6, 8.6, 8.8, 10.9],
+        backgroundColor: GREEN,
+        borderRadius: 3,
+        borderSkipped: 'bottom',
+        hoverBackgroundColor: '#22c792'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#1a2540',
+        titleColor: '#F2EDE4',
+        bodyColor: '#A89F94',
+        borderColor: 'rgba(255,255,255,0.1)',
+        borderWidth: 1,
+        callbacks: {
+          label: ctx => ' ' + ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '% of GDP'
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { display: false },
+        ticks: { color: TICK, font: { size: 12 } },
+        border: { color: 'rgba(255,255,255,0.08)' }
+      },
+      y: {
+        min: 0, max: 13,
+        grid: { color: GRID },
+        ticks: { color: TICK, font: { size: 11 }, callback: v => v + '%' },
+        border: { display: false }
+      }
+    }
+  }
+});
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
